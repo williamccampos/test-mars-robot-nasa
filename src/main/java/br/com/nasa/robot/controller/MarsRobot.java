@@ -5,6 +5,10 @@ import org.springframework.stereotype.Component;
 import br.com.nasa.robot.model.Direction;
 import br.com.nasa.robot.model.Position;
 
+/*
+ * Classe responsável por receber os comandos do controller
+ * para alterar o direção do robô
+ */
 @Component
 public class MarsRobot {
     private Position position;
@@ -12,7 +16,7 @@ public class MarsRobot {
 
     public MarsRobot() {
         this.position = new Position(0, 0);
-        this.direction = Direction.NORTH;
+        this.direction = Direction.N;
     }
 
     public String executeCommands(String commands) {
@@ -28,18 +32,23 @@ public class MarsRobot {
         return getCurrentPosition();
     }
 
+    public void resetPosition() {
+        this.position = new Position(0, 0);
+        this.direction = Direction.N;
+    }
+
     private void move() {
         switch (direction) {
-            case NORTH:
+            case N:
                 position.setY(position.getY() + 1);
                 break;
-            case SOUTH:
+            case S:
                 position.setY(position.getY() - 1);
                 break;
-            case EAST:
+            case E:
                 position.setX(position.getX() + 1);
                 break;
-            case WEST:
+            case W:
                 position.setX(position.getX() - 1);
                 break;
         }

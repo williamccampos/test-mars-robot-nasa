@@ -14,8 +14,12 @@ public class MarsRobotController {
         this.marsRobot = marsRobot;
     }
 
+    /*
+     * Comando de de coordenadas para movimentar o robô
+     */
     @PostMapping("/rest/mars/{command}")
     public ResponseEntity<String> executeCommand(@PathVariable String command) {
+        marsRobot.resetPosition();
         if (!isValidCommand(command)) {
             return ResponseEntity.badRequest().body("400 Bad Request");
         }
@@ -25,6 +29,9 @@ public class MarsRobotController {
     }
 
     private boolean isValidCommand(String command) {
+        if (command.length() > 10) {
+            return false;
+        }
         return command.matches("[LRM]+");
     }
 }
