@@ -2,8 +2,8 @@ package br.com.nasa.robot.model;
 
 public enum Direction {
     N,
-    S,
     E,
+    S,
     W;
 
     public Direction left() {

@@ -15,7 +15,7 @@ public class MarsRobotController {
     }
 
     /*
-     * Comando de de coordenadas para movimentar o robô
+     * Endpoint de requsição das coordenadas para movimentar o robô
      */
     @PostMapping("/rest/mars/{command}")
     public ResponseEntity<String> executeCommand(@PathVariable String command) {
