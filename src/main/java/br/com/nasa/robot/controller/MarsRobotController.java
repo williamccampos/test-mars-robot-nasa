@@ -15,7 +15,7 @@ public class MarsRobotController {
     }
 
     /*
-     * Comando de de coordenadas para movimentar o robô
+     * Endpoint de recebimento das coordenadas para movimentar o robô
      */
     @PostMapping("/rest/mars/{command}")
     public ResponseEntity<String> executeCommand(@PathVariable String command) {
@@ -28,6 +28,9 @@ public class MarsRobotController {
         return ResponseEntity.ok(finalPosition);
     }
 
+    /*
+     * Método de validação dos dados recebidos na requisição
+     */
     private boolean isValidCommand(String command) {
         if (command.length() > 10) {
             return false;
